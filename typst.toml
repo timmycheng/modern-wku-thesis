@@ -1,0 +1,8 @@
+[package]
+name = "example"
+version = "0.1.0"
+entrypoint = "src/lib.typ"
+authors = ["Timmycheng"]
+license = "MIT"
+description = "Wenzhou Kean University CSMT Thesis Template."
+
