@@ -1,4 +1,4 @@
-# WKU Thesis
+# Wenzhou-Kean University CSMT Graduate Thesis Typst Template
 
 A Typst template for graduate thesis at Wenzhou-Kean University Computer Science and Mathematics department.
 
