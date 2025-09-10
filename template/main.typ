@@ -2,16 +2,16 @@
 #import "../src/lib.typ": gradute_thesis
 
 #show: gradute_thesis.with(
-  title: "Automatic Visualization of Traceability Information",
+  title: [Automatic Visualization of Traceability Information],
   author: "Cheng Bao",
-  degree: "MS of Computer Information Systems",
-  department: "Department of Computer Science and Technology",
-  university: "Wenzhou-Kean University",
-  supervisor: "Dr. Nasser Mustafa",
-  month: "December",
-  year: "2025",
-  degree_year: "2025",
-  program_type: "Master of Science",
+  degree: [MS of Computer Information Systems],
+  department: [Department of Computer Science and Technology],
+  university: [Wenzhou-Kean University],
+  supervisor: [Dr. Nasser Mustafa],
+  month: [December],
+  year: [2025],
+  degree_year: [2025],
+  program_type: [Master of Science],
   abstract: [
     Classical Traceability Management Systems (TMS) help track links between software parts like requirements, designs, Code, and test cases. They help keep projects organized and meet quality goals. But they have issues. Pulling out data takes too long. Searching is hard. The results are greasy and not easy to understand. These problems slow teams down and make fast decisions, especially for agile teams.
 
@@ -54,18 +54,21 @@
     "IMAP": "Internet Message Access Protocol",
   ),
 )
+// THE CONTENT GOES HERE
 = Introduction
 
 #lorem(20)
 
-using References @brown2022algorithms, @anderson2023blockchain
-
-try add figure and use it @fig:1
+using References @brown2022algorithms, @anderson2023blockchain, try add figure and use it @fig:1
 
 #figure(
   image("pic.png"),
   caption: [Example Figure],
 )<fig:1>
+
+#lorem(100)
+
+#lorem(150)
 == Second heading
 === Third heading
 ==== Fourth heading

@@ -1,13 +1,13 @@
 #let gradute_thesis(
   title: [thesis title],
-  author: [author name],
+  author: "author name",
   degree: [MS of Computer Information Systems],
   department: [Department of Computer Science and Technology],
   university: [Wenzhou-Kean University],
   supervisor: [Supervisor Name],
   month: [Month],
   year: [Year],
-  degree_year: [2023],
+  degree_year: [Year],
   program_type: [Master of Science],
   degree_type: [Master],
   degree_department: [Computer Science and Technology],
@@ -22,12 +22,17 @@
   // 初始设置：前置章节不显示任何编号
   set heading(numbering: none)
   
-  // 设置标题字号
+  // 设置标题字号和间距
   show heading: it => {
     let sizes = (25pt, 18pt, 15pt, 12pt, 12pt, 12pt)
+    let spacings = (2em, 1.6em, 1.3em, 1.1em, 1em, 1em)
     let level = it.level - 1
     let size = if level < sizes.len() { sizes.at(level) } else { 12pt }
+    let spacing = if level < spacings.len() { spacings.at(level) } else { 1em }
+    
+    v(spacing, weak: true)
     text(size: size, weight: "bold")[#it]
+    v(spacing, weak: true)
   }
   
   // 设置表格标题样式：10pt，粗体，位于表格上方
@@ -148,12 +153,10 @@
   if abstract != none {
     [= Abstract]
     
-    v(2em)
-    
     [#abstract]
     
-    v(2em)
-    
+    v(1em)
+
     if keywords != none {
       text(weight: "bold")[Keywords: ] + [#keywords]
     }
@@ -164,8 +167,6 @@
   // Acknowledgments section (if provided)
   if acknowledgments != none {
     [= Acknowledgments]
-    
-    v(2em)
     
     [#acknowledgments]
     
@@ -206,8 +207,6 @@
 
   if acronyms != none {
     [= Definition of Acronyms]
-    
-    v(2em)
     
     // Create table from acronyms dictionary wrapped in figure
     figure(
@@ -251,7 +250,7 @@
   })
   
   show std.bibliography: set text(12pt)
-  show std.bibliography: set block(spacing: 0.5em)
+  show std.bibliography: set par(spacing: 1em, leading: 0.5em)
   set std.bibliography(title: [References], style: "ieee")
   body
   // 使用相对于调用文件的路径
