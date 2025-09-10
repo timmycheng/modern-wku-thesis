@@ -1,4 +1,4 @@
-#let gradute_thesis(
+#let graduate_thesis(
   title: [thesis title],
   author: "author name",
   degree: [MS of Computer Information Systems],

@@ -1,13 +1,14 @@
-// this is template test of wku thesis
-#import "../src/lib.typ": gradute_thesis
+// WKU Thesis Template
+// #import "@preview/wku-thesis:0.1.0": graduate_thesis
+#import "../src/lib.typ": graduate_thesis
 
-#show: gradute_thesis.with(
-  title: [Automatic Visualization of Traceability Information],
-  author: "Cheng Bao",
+#show: graduate_thesis.with(
+  title: [Your Thesis Title Goes Here],
+  author: "Your Name",
   degree: [MS of Computer Information Systems],
   department: [Department of Computer Science and Technology],
   university: [Wenzhou-Kean University],
-  supervisor: [Dr. Nasser Mustafa],
+  supervisor: [Your Supervisor],
   month: [December],
   year: [2025],
   degree_year: [2025],
@@ -21,7 +22,7 @@
   ],
   keywords: [Traceability; Automatic; Regular Expression; Visualization; TMS.],
   acknowledgments: [
-    I would like to express my sincere gratitude to my supervisor, Dr. Nasser Mustafa, for his invaluable guidance, patience, and support throughout this research. His expertise and insights have been instrumental in shaping this work.
+    I would like to express my sincere gratitude to my supervisor, Dr. Your Supervisor, for his invaluable guidance, patience, and support throughout this research. His expertise and insights have been instrumental in shaping this work.
     
     I am also grateful to the faculty and staff of the Department of Computer Science and Technology at Wenzhou-Kean University for providing an excellent academic environment and resources that made this research possible.
     
