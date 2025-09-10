@@ -1,6 +1,5 @@
 // WKU Thesis Template
-// #import "@preview/wku-thesis:0.1.0": graduate_thesis
-#import "../src/lib.typ": graduate_thesis
+#import "@preview/wku-thesis:0.1.0": graduate_thesis
 
 #show: graduate_thesis.with(
   title: [Your Thesis Title Goes Here],
