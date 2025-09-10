@@ -95,32 +95,6 @@ Even more content...
 - Table and figure caption styling
 - Professional layout and typography
 
-## Requirements
-
-- Typst 0.11.0 or later
-- A `.bib` file for references (if using bibliography)
-
-## 发布到 Typst Universe
-
-本项目包含自动化的GitHub Actions工作流，可以帮助你将模板发布到Typst Universe。
-
-### 快速发布步骤：
-
-1. **Fork typst/packages 仓库**：访问 https://github.com/typst/packages 并fork到你的账户
-
-2. **触发自动发布**：
-   ```bash
-   # 方法1：通过Git标签（推荐）
-   git tag v0.1.0
-   git push origin v0.1.0
-   
-   # 方法2：在GitHub Actions页面手动触发
-   ```
-
-3. **创建Pull Request**：工作流完成后，到你fork的packages仓库创建PR到官方仓库
-
-详细说明请查看 [.github/workflows/README.md](.github/workflows/README.md)
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit issues or pull requests to improve this template.
@@ -128,7 +102,3 @@ Contributions are welcome! Please feel free to submit issues or pull requests to
 ## License
 
 This template is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-This template was created for students at Wenzhou-Kean University's Computer Science and Mathematics department to help streamline the thesis writing process.

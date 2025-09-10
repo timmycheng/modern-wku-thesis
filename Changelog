@@ -1,0 +1,11 @@
+# Changelog
+
+The format of changelog is based on [Keep a Changlog](https://keepachangelog.com/en/1.1.0/)
+
+## [0.1.0] - 2025-09-10
+
+### Added
+
+- Init & Release the first version
+- graduate thesis template with cover page, cover backfront page, abstract, acknowledgements, definition of acronyms, table of content, list of tables/figures
+- general configs for heading and paragraph
