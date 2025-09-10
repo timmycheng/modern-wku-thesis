@@ -1,0 +1,77 @@
+name: Publish to Typst Universe
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version (e.g., 0.1.0)'
+        required: true
+        default: '0.1.0'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+        with:
+          path: wku-thesis
+
+      - name: Checkout forked typst/packages repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/packages
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: packages
+
+      - name: Set version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            VERSION=${GITHUB_REF#refs/tags/v}
+          else
+            VERSION=${{ github.event.inputs.version }}
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Using version: $VERSION"
+
+      - name: Create package directory
+        run: |
+          mkdir -p packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}
+
+      - name: Copy package files
+        run: |
+          cp -r wku-thesis/src packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
+          cp -r wku-thesis/template packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
+          cp wku-thesis/typst.toml packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
+          cp wku-thesis/README.md packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
+          cp wku-thesis/LICENSE packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
+
+      - name: Update version in typst.toml
+        run: |
+          cd packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}
+          sed -i 's/version = "[^"]*"/version = "${{ steps.version.outputs.version }}"/' typst.toml
+
+      - name: Commit and push changes
+        run: |
+          cd packages
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Add wku-thesis v${{ steps.version.outputs.version }}"
+          git push
+
+      - name: Create summary
+        run: |
+          echo "## 🚀 Package Published Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Package Location:** \`packages/preview/wku-thesis/${{ steps.version.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Go to your forked [packages repository](https://github.com/${{ github.repository_owner }}/packages)" >> $GITHUB_STEP_SUMMARY
+          echo "2. Create a Pull Request to [typst/packages](https://github.com/typst/packages)" >> $GITHUB_STEP_SUMMARY
+          echo "3. Wait for review and approval from the Typst team" >> $GITHUB_STEP_SUMMARY
