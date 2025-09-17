@@ -1,5 +1,6 @@
 // WKU Thesis Template
-#import "@preview/modern-wku-thesis:0.1.0": graduate-thesis
+// #import "@preview/modern-wku-thesis:0.1.0": graduate-thesis
+#import "../src/lib.typ": graduate-thesis, wImage, wTable
 
 #show: graduate-thesis.with(
   title: [Your Thesis Title Goes Here],
@@ -61,10 +62,13 @@
 
 using References @brown2022algorithms, @anderson2023blockchain, try add figure and use it @fig:1
 
-#figure(
-  image("pic.png"),
-  caption: [Example Figure],
-)<fig:1>
+// #figure(
+//   image("pic.png"),
+//   caption: [Example Figure],
+// )<fig:1>
+
+#wImage("pic.png",[Kean University Logo],[fig:1])
+
 
 #lorem(100)
 

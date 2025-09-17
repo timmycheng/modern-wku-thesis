@@ -256,3 +256,17 @@
   // 使用相对于调用文件的路径
   bibliography
 }
+
+#let figure-image(path,caption,label)=figure(
+  image(path),
+  caption: caption,
+  label: label,
+  kind: image
+)
+
+#let figure-table(data,caption,label)=figure(
+  table(data),
+  caption: caption,
+  label: label,
+  kind: table
+)
