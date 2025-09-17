@@ -1,5 +1,3 @@
-name: Publish to Typst Universe
-
 on:
   push:
     tags:
@@ -18,7 +16,7 @@ jobs:
       - name: Checkout current repository
         uses: actions/checkout@v4
         with:
-          path: wku-thesis
+          path: modern-wku-thesis
 
       - name: Checkout forked typst/packages repository
         uses: actions/checkout@v4
@@ -40,15 +38,15 @@ jobs:
 
       - name: Create package directory
         run: |
-          mkdir -p packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}
+          mkdir -p packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}
 
       - name: Copy package files
         run: |
-          cp -r wku-thesis/src packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
-          cp -r wku-thesis/template packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
-          cp wku-thesis/typst.toml packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
-          cp wku-thesis/README.md packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
-          cp wku-thesis/LICENSE packages/packages/preview/wku-thesis/${{ steps.version.outputs.version }}/
+          cp -r modern-wku-thesis/src packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}/
+          cp -r modern-wku-thesis/template packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}/
+          cp modern-wku-thesis/typst.toml packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}/
+          cp modern-wku-thesis/README.md packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}/
+          cp modern-wku-thesis/LICENSE packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}/
 
       - name: Update version in typst.toml
         run: |
@@ -61,7 +59,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Add wku-thesis v${{ steps.version.outputs.version }}"
+          git commit -m "Add modern-wku-thesis v${{ steps.version.outputs.version }}"
           git push
 
       - name: Create summary
@@ -69,7 +67,7 @@ jobs:
           echo "## 🚀 Package Published Successfully!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Version:** ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Package Location:** \`packages/preview/wku-thesis/${{ steps.version.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Package Location:** \`packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Next Steps:" >> $GITHUB_STEP_SUMMARY
           echo "1. Go to your forked [packages repository](https://github.com/${{ github.repository_owner }}/packages)" >> $GITHUB_STEP_SUMMARY
