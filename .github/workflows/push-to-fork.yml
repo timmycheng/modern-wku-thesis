@@ -47,6 +47,7 @@ jobs:
           cp modern-wku-thesis/typst.toml packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}/
           cp modern-wku-thesis/README.md packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}/
           cp modern-wku-thesis/LICENSE packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}/
+          cp modern-wku-thesis/thumbnail.png packages/packages/preview/modern-wku-thesis/${{ steps.version.outputs.version }}/
 
       - name: Update version in typst.toml
         run: |
