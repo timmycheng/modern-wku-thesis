@@ -1,5 +1,5 @@
-// WKU Thesis Template
-#import "@preview/wku-thesis:0.1.0": graduate-thesis
+// Import the package
+#import "@preview/modern-wku-thesis:0.1.0": graduate-thesis
 
 #show: graduate-thesis.with(
   title: [Your Thesis Title Goes Here],
@@ -59,12 +59,28 @@
 
 #lorem(20)
 
-using References @brown2022algorithms, @anderson2023blockchain, try add figure and use it @fig:1
+using References @brown2022algorithms, @anderson2023blockchain, try add figure and use it @fig:1, as log as table: @tb:1.
 
 #figure(
   image("pic.png"),
   caption: [Example Figure],
 )<fig:1>
+
+#figure(
+  table(
+    columns: 5,
+    stroke: (x,y)=>
+    if y==0 {
+      (top:1pt)
+      (bottom:0.5pt)
+    },
+    [*Heading 1*],[*Heading 2*],[*Heading 3*],[*Heading 4*],[*Heading 5*],
+    [R1,C1],[R1,C2],[R1,C3],[R1,C4],[R1,C5],
+    [R2,C1],[R2,C2],[R2,C3],[R2,C4],[R2,C5],
+    table.hline()
+  ),
+  caption: [Example Table],
+)<tb:1>
 
 #lorem(100)
 
