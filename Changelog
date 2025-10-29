@@ -13,3 +13,9 @@ The format of changelog is based on [Keep a Changlog](https://keepachangelog.com
 ## [0.1.1] - 2025-09-18
 
 - Some fixs and documents improvements
+
+## [0.1.2] - 2025-10-29
+
+### Modify
+- Add pagebreak for each level 1 heading
+- Make level 1 heading center align

@@ -2,15 +2,15 @@
   title: [thesis title],
   author: "author name",
   degree: [MS of Computer Information Systems],
-  department: [Department of Computer Science and Technology],
+  department: [College of Science, Mathematics and Technology],
   university: [Wenzhou-Kean University],
   supervisor: [Supervisor Name],
   month: [Month],
   year: [Year],
   degree-year: [Year],
-  program-type: [Master of Science],
+  program-type: [Master of Computer Information Systems],
   degree-type: [Master],
-  degree-department: [Computer Science and Technology],
+  degree-department: [College of Science, Mathematics and Technology],
   abstract: none,
   keywords: none,
   acknowledgments: none,
@@ -30,8 +30,36 @@
     let size = if level < sizes.len() { sizes.at(level) } else { 12pt }
     let spacing = if level < spacings.len() { spacings.at(level) } else { 1em }
     
+    // Check if this is a content level 1 heading (Chapter X)
+    let is-chapter = false
+    let chapter-number = 0
+    
+    if it.level == 1 and it.numbering != none {
+      let numbering-result = numbering(it.numbering, ..counter(heading).get())
+      if type(numbering-result) == str and numbering-result.starts-with("Chapter ") {
+        is-chapter = true
+        // Extract chapter number
+        let chapter-str = numbering-result.slice(8) // Remove "Chapter " prefix
+        chapter-number = int(chapter-str)
+      }
+    }
+    
+    // Add pagebreak before Chapter 2 and onwards
+    if is-chapter and chapter-number >= 2 {
+      pagebreak()
+    }
+    
     v(spacing, weak: true)
-    text(size: size, weight: "bold")[#it]
+    
+    // Apply center alignment for all content level 1 headings (Chapter X)
+    if it.level == 1 and is-chapter {
+      align(center)[
+        #text(size: size, weight: "bold")[#it]
+      ]
+    } else {
+      text(size: size, weight: "bold")[#it]
+    }
+    
     v(spacing, weak: true)
   }
   
@@ -252,7 +280,9 @@
   show std.bibliography: set text(12pt)
   show std.bibliography: set par(spacing: 1em, leading: 0.5em)
   set std.bibliography(title: [References], style: "ieee")
+  
   body
   // 使用相对于调用文件的路径
+  pagebreak()
   bibliography
 }

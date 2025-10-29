@@ -1,5 +1,6 @@
 // Import the package
-#import "@preview/modern-wku-thesis:0.1.0": graduate-thesis
+// #import "@preview/modern-wku-thesis:0.1.0": graduate-thesis
+#import "../src/lib.typ":graduate-thesis
 
 #show: graduate-thesis.with(
   title: [Your Thesis Title Goes Here],
@@ -82,7 +83,7 @@ using References @brown2022algorithms, @anderson2023blockchain, try add figure a
   caption: [Example Table],
 )<tb:1>
 
-#lorem(100)
+#lorem(200)
 
 #lorem(150)
 == Second heading
